@@ -25,10 +25,11 @@ import { connectionIdToColor, pointerEventToCanvasPoint } from "@/lib/utils";
 import { Info } from "./info";
 import { Participants } from "./participants";
 import { Toolbar } from "./toolbar";
-import { CursorsPresence } from "./cursors-presence";
 import { LayerPreview } from './layer-preview';
+import { CursorsPresence } from "./cursors-presence";
 
 import constant from "@/app/_constant/constant";
+import { SelectionBox } from './selection-box';
 
 
 interface CanvasProps {
@@ -206,6 +207,9 @@ export const Canvas = ({
                             selectionColor={layerIdsToColorSelection[layerId]}
                         />
                     ))}
+                    <SelectionBox 
+                        onResizeHandlePointerDown={() => {}}
+                    />
                     <CursorsPresence />
                 </g>
             </svg>
