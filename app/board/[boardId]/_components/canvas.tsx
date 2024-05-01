@@ -32,6 +32,7 @@ import { CursorsPresence } from "./cursors-presence";
 
 import constant from "@/app/_constant/constant";
 import { SelectionBox } from './selection-box';
+import { SelectionTools } from './selection-tools';
 
 
 interface CanvasProps {
@@ -303,6 +304,10 @@ export const Canvas = ({
                 canUndo={canUndo}
                 undo={history.undo}
                 redo={history.redo}
+            />
+            <SelectionTools
+                camera={camera}
+                setLastUsedColor={setLastUsedColor}
             />
             <svg className="h-[100vh] w-[100vw]"
              onWheel={onWheel}
