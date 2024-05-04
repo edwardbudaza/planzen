@@ -452,7 +452,7 @@ export const Canvas = ({
         document.addEventListener("keydown", onKeyDown);
 
         return () => {
-            document.removeEventListener("keydown", onkeydown)
+            document.removeEventListener("keydown", onKeyDown);
         };
     }, [deleteLayers, history]);
 
