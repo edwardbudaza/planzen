@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { api } from "@/convex/_generated/api";
+import { usePromodal } from "@/store/use-pro-modal";
 import { useApiMutation } from "@/hooks/use-api-mutation";
 
 interface NewBoardButtonProps {
@@ -18,6 +19,7 @@ export const NewBoardButton = ({
     disabled,
 }: NewBoardButtonProps) => {
     const router = useRouter();
+    const { onOpen } = usePromodal();
     const {mutate, pending} = useApiMutation(api.board.create);
 
     const onClick = () => {
@@ -29,7 +31,10 @@ export const NewBoardButton = ({
                 toast.success("Board created");
                 router.push(`/board/${id}`)
             })
-            .catch(() => toast.error("Failed to create board"));
+            .catch(() => {
+                toast.error("Failed to create board");
+                onOpen();
+            });
     }
     return (
         <button
